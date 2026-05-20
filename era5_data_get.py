@@ -31,7 +31,7 @@ def init_time_get():
             print("The available date is before", valid_time.strftime("%Y-%m-%d"), "00:00...", "Please enter again!")
         else:
             print(f"Downloading ERA5 data for {init_time.strftime('%Y-%m-%d-%H')}" + ":00...")
-            init_time_6h = init_time + timedelta(hours=6) # FengWu requires for additional data after 6h
+            init_time_6h = init_time - timedelta(hours=6) # FengWu requires for additional data t0-6h
             return init_time, init_time.strftime('%Y-%m-%d'), init_time.strftime('%H:%M'), init_time_6h.strftime('%Y-%m-%d'), init_time_6h.strftime('%H:%M')
 
 
@@ -143,5 +143,5 @@ def convert_to_numpy(input_path):
 
 
 init_time, init_date, init_hour, init_date_6h, init_hour_6h = init_time_get()
-# download_era5_data(input_data_dir, init_date, init_hour, init_date_6h, init_hour_6h)
-# convert_to_numpy(input_data_dir)
+download_era5_data(input_data_dir, init_date, init_hour, init_date_6h, init_hour_6h)
+convert_to_numpy(input_data_dir)
