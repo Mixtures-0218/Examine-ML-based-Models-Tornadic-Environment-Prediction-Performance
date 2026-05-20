@@ -2,6 +2,9 @@
 
 Download ERA5 data, build inputs, and run FuXi model inference.
 
+## The FuXi Models should be prior downloaded from the original GitHub Page
+https://github.com/tpys/FuXi
+
 ## End-to-End Workflow
 
 Run these 3 scripts in order:
