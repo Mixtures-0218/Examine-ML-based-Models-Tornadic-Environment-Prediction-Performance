@@ -1,4 +1,4 @@
-# FuXi-Sky
+# FuXi Inference Process
 
 Download ERA5 data, build inputs, and run FuXi model inference.
 
