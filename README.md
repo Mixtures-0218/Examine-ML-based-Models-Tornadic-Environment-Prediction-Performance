@@ -1,6 +1,6 @@
 # Pangu Weather Inference Process
 
-## The Model files should be downloaded from the original GitHub Page
+## The model files should be downloaded from the original GitHub Page
 https://github.com/198808xc/Pangu-Weather
 
 ## How to get inference results
