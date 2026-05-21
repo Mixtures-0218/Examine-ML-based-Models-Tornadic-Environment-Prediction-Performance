@@ -26,7 +26,7 @@ The result folder should named by `YYYY-MM-DD-HHUTC` under the same path of `tor
         │   ├── fuxi
 ```
 
-*The other models' results should have the similar structure as fengwu_v1 shown above*
+*The other models' results should have the similar structure as fengwu_v1 shown above, `.nc` file naming format ModelName_LeadTime.nc*
 
 The parameter output files will be stored in the correspondent `YYYY-MM-DD-HHUTC` folder
 
