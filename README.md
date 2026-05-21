@@ -4,8 +4,10 @@
 https://github.com/OpenEarthLab/FengWu
 
 ## Inference
-The target time in the `inferece.py` should be correctly seted
+The target time (`forecast_time`) in the `inferece.py` should be correctly seted
 
 The scripts will automatically gather data for lead times 24h, 48h, 72h, 120h, and 168h
+
+The script will run both Fengwu_v1 and Fengwu_v2.
 
 Then run the script `output_decode.py` once the target time is correctly seted. This script will automatically run all 3 py scripts to get the inference result
