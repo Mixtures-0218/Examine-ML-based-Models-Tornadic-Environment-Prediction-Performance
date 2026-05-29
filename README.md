@@ -30,7 +30,7 @@ The result folder should named by `YYYY-MM-DD-HHUTC` under the same path of `tor
 
 The parameter output files will be stored in the correspondent `YYYY-MM-DD-HHUTC` folder
 
-Run `EHI.py` after compute the above parameters to get the Energy Helicity Index data in the correspondent `YYYY-MM-DD-HHUTC` folder 
+Run `STP.py` after compute the above parameters to get the significant tornado parameter data in the correspondent `YYYY-MM-DD-HHUTC` folder 
 
 ## Get Metrics such as POD, SR, FSS, etc.
 Run script `Scores.py` with intended varaibles `models`, `times`, and `parameters`.
