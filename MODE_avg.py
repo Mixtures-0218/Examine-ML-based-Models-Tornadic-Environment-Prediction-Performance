@@ -172,7 +172,7 @@ parameters = [
     'k_idx',
     'negative_helicity',
     'cin',
-    'ehi']
+    'stp']
 
 # Create output directory
 os.makedirs('avg_mode', exist_ok=True)

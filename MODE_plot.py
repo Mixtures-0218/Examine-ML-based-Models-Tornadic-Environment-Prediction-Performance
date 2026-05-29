@@ -13,7 +13,7 @@ parameters = [
     'negative_helicity',
     'lcl',
     'lfc',
-    'ehi']
+    'stp']
 models_ai = ['pangu', 'fengwu_v1', 'fengwu_v2', 'fuxi']
 lead_times = [24, 48, 72, 120, 168]
 
@@ -25,7 +25,7 @@ parameter_display = {
     'negative_helicity': '0-3 km Negative SRH',
     'lcl': 'LCL',
     'lfc': 'LFC',
-    'ehi': 'EHI'
+    'stp': 'STP'
 }
 
 # Color scheme

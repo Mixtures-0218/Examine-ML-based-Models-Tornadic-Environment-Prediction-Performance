@@ -17,7 +17,7 @@ parameters = [
     'negative_helicity',
     'lcl',
     'lfc',
-    'ehi']
+    'stp']
 
 parameter_display = {
     'cape': 'CAPE',
@@ -27,7 +27,7 @@ parameter_display = {
     'negative_helicity': '0-3 km Negative SRH',
     'lcl': 'LCL',
     'lfc': 'LFC',
-    'ehi': 'EHI'
+    'stp': 'STP'
 }
 
 # Color scheme

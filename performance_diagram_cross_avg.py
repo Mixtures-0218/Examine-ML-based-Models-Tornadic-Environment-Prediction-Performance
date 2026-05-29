@@ -269,7 +269,7 @@ def _combine_images(image_paths, nrows, ncols, figsize, save_path, title=None):
         'negative_helicity',
         'lcl',
         'lfc',
-        'ehi']
+        'stp']
     parameter_display = {
         'cape': 'CAPE',
         'cin': 'CIN',
@@ -278,7 +278,7 @@ def _combine_images(image_paths, nrows, ncols, figsize, save_path, title=None):
         'negative_helicity': '0-3 km Negative SRH',
         'lcl': 'LCL',
         'lfc': 'LFC',
-        'ehi': 'EHI'
+        'stp': 'STP'
     }
     for i, ax in enumerate(axes):
         if i < len(image_paths):
@@ -318,7 +318,7 @@ parameters = [
     'negative_helicity',
     'lcl',
     'lfc',
-    'ehi']
+    'stp']
 lead_times = ['24h', '48h', '72h', '120h', '168h']
 
 parameter_display = {
@@ -329,7 +329,7 @@ parameter_display = {
     'negative_helicity': '0-3 km Negative SRH',
     'lcl': 'LCL',
     'lfc': 'LFC',
-    'ehi': 'EHI'
+    'stp': 'STP'
 }
 
 output_base = 'avg_performance_diagram'

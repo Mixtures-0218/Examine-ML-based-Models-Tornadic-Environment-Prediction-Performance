@@ -24,7 +24,7 @@ parameters = [
     'negative_helicity',
     'lcl',
     'lfc',
-    'ehi']
+    'stp']
 
 # —— MET-aligned parameters ——
 lead_times = [24, 48, 72, 120, 168]

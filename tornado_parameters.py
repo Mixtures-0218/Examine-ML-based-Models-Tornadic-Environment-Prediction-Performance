@@ -387,44 +387,47 @@ class tornado_analyze:
 # models = ['pangu', 'fengwu_v1', 'fengwu_v2', 'fuxi', 'real']
 models = ['gfs']
 
-# Define bounds (Oklahoma region)
-lonW, lonE = -100.0, -94.0
-latS, latN = 33.0, 38.0
+# Guard main execution against import
+if __name__ == '__main__':
 
-# All EF3
+    # Define bounds (Oklahoma region)
+    lonW, lonE = -100.0, -94.0
+    latS, latN = 33.0, 38.0
 
-"""times = ['2013-05-20-20UTC', '2013-05-31-23UTC', '2015-05-07-02UTC',
-         '2015-05-25-20UTC', '2016-05-09-21UTC', '2023-04-20-02UTC',
-         '2024-04-28-04UTC', '2024-05-07-02UTC', '2024-05-26-04UTC',
-         '2025-05-19-23UTC']"""
-times = ['2025-05-19-23UTC']
+    # All EF3
 
-for time in times:
-    # Select forecast time
-    # Change time here for different event!
-    parent_path = os.path.join(os.getcwd(), time)
-    # Choose different models and folders
-    for model in models:
-        if model == 'real':
-            path = [os.path.join(parent_path, 'real.nc')]
-            output_path = parent_path
-        elif model == 'gfs':
-            path = []
-            sub_path = os.path.join(parent_path, 'gfs')
-            output_path = sub_path
-            for file in os.listdir(sub_path):
-                if file.endswith('.nc') and '._' not in file:
-                    path.append(os.path.join(sub_path, file))
-            path = sorted(path)[::-1]
-        else:
-            sub_path = os.path.join(parent_path, model)
-            output_path = sub_path
-            path = [os.path.join(sub_path, f'{model}_24.nc'),
-                    os.path.join(sub_path, f'{model}_48.nc'),
-                    os.path.join(sub_path, f'{model}_72.nc'),
-                    os.path.join(sub_path, f'{model}_120.nc'),
-                    os.path.join(sub_path, f'{model}_168.nc')]
-        # Run analyzer with different model outputs
-        analyzer = tornado_analyze(lonW, lonE, latS, latN, resolution=0.25)
-        saving = analyzer.save(model, path, output_path)
-        print(saving)
+    """times = ['2013-05-20-20UTC', '2013-05-31-23UTC', '2015-05-07-02UTC',
+             '2015-05-25-20UTC', '2016-05-09-21UTC', '2023-04-20-02UTC',
+             '2024-04-28-04UTC', '2024-05-07-02UTC', '2024-05-26-04UTC',
+             '2025-05-19-23UTC']"""
+    times = ['2025-05-19-23UTC']
+
+    for time in times:
+        # Select forecast time
+        # Change time here for different event!
+        parent_path = os.path.join(os.getcwd(), time)
+        # Choose different models and folders
+        for model in models:
+            if model == 'real':
+                path = [os.path.join(parent_path, 'real.nc')]
+                output_path = parent_path
+            elif model == 'gfs':
+                path = []
+                sub_path = os.path.join(parent_path, 'gfs')
+                output_path = sub_path
+                for file in os.listdir(sub_path):
+                    if file.endswith('.nc') and '._' not in file:
+                        path.append(os.path.join(sub_path, file))
+                path = sorted(path)[::-1]
+            else:
+                sub_path = os.path.join(parent_path, model)
+                output_path = sub_path
+                path = [os.path.join(sub_path, f'{model}_24.nc'),
+                        os.path.join(sub_path, f'{model}_48.nc'),
+                        os.path.join(sub_path, f'{model}_72.nc'),
+                        os.path.join(sub_path, f'{model}_120.nc'),
+                        os.path.join(sub_path, f'{model}_168.nc')]
+            # Run analyzer with different model outputs
+            analyzer = tornado_analyze(lonW, lonE, latS, latN, resolution=0.25)
+            saving = analyzer.save(model, path, output_path)
+            print(saving)

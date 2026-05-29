@@ -188,6 +188,6 @@ def plot_all_models(time, parameter, lead_idx):
 if __name__ == '__main__':
     plot_all_models(
         time='2025-05-19-23UTC',
-        parameter='ehi',
+        parameter='stp',
         lead_idx=0,     # 24h
     )
