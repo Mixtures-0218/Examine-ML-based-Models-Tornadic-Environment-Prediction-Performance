@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from cartopy import crs as ccrs, feature as cfeature
+from matplotlib.lines import Line2D
 import os
 
 
@@ -41,7 +42,7 @@ def plot_model_leads(time, parameter, model='pangu'):
 
     # ---------- Compute Real's P75 ----------
     p75 = np.nanpercentile(real_data, 75)
-    print(f"Real P75 = {p75:.2f}")
+    print(f"Real P75 = {p75:.2f} J/kg")
 
     # ---------- Map parameters ----------
     projPC = ccrs.PlateCarree()
@@ -64,7 +65,7 @@ def plot_model_leads(time, parameter, model='pangu'):
 
     # ---------- Subplot layout 2x3 ----------
     titles_def = [
-        ('Observed', real_data),
+        ('ERA5-Reanalysis', real_data),
         (f'{model_label} {lead_times[0]}h', fcst_all[0]),
         (f'{model_label} {lead_times[1]}h', fcst_all[1]),
         (f'{model_label} {lead_times[2]}h', fcst_all[2]),
@@ -108,8 +109,19 @@ def plot_model_leads(time, parameter, model='pangu'):
 
     plt.suptitle(
         f'{parameter.upper()} — {time}\n'
-        f'Model: {model_label} — Red contour: P75 of observed data ({p75:.1f})',
+        f'Model: {model_label} — Red contour: P75 of ERA5 ({p75:.1f})',
         fontsize=16, fontweight='bold', y=0.97)
+
+    # Legend — parameter label only
+    legend_elements = [
+        Line2D([0], [0], color='red', linewidth=2,
+               label=f'ERA5 P75 ({p75:.0f})'),
+        Line2D([0], [0], color='black', linewidth=0.6, alpha=0.35,
+               label=parameter.upper()),
+    ]
+    fig.legend(handles=legend_elements, loc='lower center',
+               ncol=2, fontsize=10, framealpha=0.9)
+
     plt.tight_layout()
 
     # Save
@@ -125,6 +137,6 @@ def plot_model_leads(time, parameter, model='pangu'):
 if __name__ == '__main__':
     plot_model_leads(
         time='2025-05-19-23UTC',
-        parameter='k_idx',
-        model='pangu',       # Options: pangu, fengwu_v1, fengwu_v2, fuxi, gfs
+        parameter='positive_helicity',
+        model='gfs',       # Options: pangu, fengwu_v1, fengwu_v2, fuxi, gfs
     )

@@ -8,14 +8,14 @@ import os
 
 # ==================== Configuration ====================
 
-times = ['2013-05-20-20UTC', '2013-05-31-23UTC', '2015-05-07-02UTC',
+"""times = ['2013-05-20-20UTC', '2013-05-31-23UTC', '2015-05-07-02UTC',
          '2015-05-25-20UTC', '2016-05-09-21UTC', '2023-04-20-02UTC',
          '2024-04-28-04UTC', '2024-05-07-02UTC', '2024-05-26-04UTC',
          '2025-05-19-23UTC']
-
-# times = ['2025-05-19-23UTC']
-models = ['pangu', 'fengwu_v1', 'fengwu_v2', 'fuxi']
-# models = ['gfs']
+"""
+times = ['2025-05-19-23UTC']
+# models = ['pangu', 'fengwu_v1', 'fengwu_v2', 'fuxi']
+models = ['gfs']
 parameters = [
     'cape',
     'cin',

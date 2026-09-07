@@ -171,7 +171,7 @@ def plot_all_models(time, parameter, lead_idx):
 
         plt.suptitle(
             f'{parameter.upper()} — {time}\n'
-            f'Red contour: P75 of observed data ({p75:.1f})',
+            f'Red contour: P75 of ERA5 ({p75:.1f})',
             fontsize=16, fontweight='bold')
         plt.tight_layout(rect=[0, 0, 1, 0.92])
 
@@ -187,7 +187,7 @@ def plot_all_models(time, parameter, lead_idx):
 # ==================== Usage Example ====================
 if __name__ == '__main__':
     plot_all_models(
-        time='2025-05-19-23UTC',
-        parameter='stp',
+        time='2024-04-28-04UTC',
+        parameter='cape',
         lead_idx=0,     # 24h
     )

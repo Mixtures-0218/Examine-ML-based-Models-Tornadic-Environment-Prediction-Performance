@@ -38,7 +38,7 @@ model_colors = {
     'fengwu_v1': '#2e8b57',
     'fengwu_v2': '#3cb371',
     'fuxi': '#d62728',
-    'gfs': '#ff8c00',
+    'gfs': '#9B59B6',
 }
 
 # Model display names (add GFS)
