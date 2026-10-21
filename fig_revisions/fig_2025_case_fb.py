@@ -47,7 +47,7 @@ param_labels = {
 
 def compute_fb(fcst, ref, param):
     """FB: area ratio of fcst vs ref above/below percentile threshold."""
-    if param in ['cin']:
+    if param in ['cin', 'negative_helicity']:
         p_thresh = np.nanpercentile(ref, 25)
         n_ref = np.nansum((ref <= p_thresh).astype(float))
         n_fcst = np.nansum((fcst <= p_thresh).astype(float))
@@ -197,3 +197,4 @@ if __name__ == '__main__':
     print_summary(fb_result)
 
     print(f'\nDone. Output in {OUT_DIR}')
+

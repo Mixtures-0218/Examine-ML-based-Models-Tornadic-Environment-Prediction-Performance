@@ -521,12 +521,12 @@
   },
   {
     "path": "fig_revisions/output/model_colors_20261019/mode_fb_verification.json",
-    "sha256": "447f215af8e30aa748b82343f3b8069bad2ad5a9ae46045f2670299aaf496ea6",
-    "size": 91881
+    "sha256": "f9971c5ee7e9365160616e49b7f680ac0b82e99e79db2d711521eed56a86f1a2",
+    "size": 91861
   },
   {
     "path": "fig_revisions/output/unified_dispersion_20261016/source_data.json",
-    "sha256": "1f660c13ed1bdf6bbeaab81dd2f09eb672a44dbb72a8c7f275f2d7ec35a40e4c",
-    "size": 59523
+    "sha256": "cd645303dd3f2164dd08db7d9542b9aa6426b14ab688a582ed58f523fe878301",
+    "size": 59272
   }
 ]

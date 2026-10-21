@@ -92,6 +92,10 @@ The top-level FSS/MODE plotting scripts read the saved selected cross-event disp
 
 Earlier figures directly under `figures/` and revision scripts directly under `fig_revisions/` retain the previous numbering/layout for continuity. The two linked figure indexes identify the current manuscript assets.
 
+### Negative-SRH frequency-bias correction (21 October 2026)
+
+S5 and S6 now use the reference P25 lower tail for negative SRH, consistently with CIN and the manuscript Methods. The previous FB helper used the P75 upper tail for negative SRH, which counted zero-valued regions. Other parameter values, main-figure data and model colors are unchanged. The [correction record](figures/supplementary/negative_srh_threshold_correction.json) retains the previous and corrected event-level values and dispersion estimates. Two ERA5 events have P25 = 0; their inclusive lower-tail masks cover the entire non-positive field and do not discriminate strong-negative-SRH forecast skill.
+
 ## Dependencies
 
 Python 3.9+, `metpy`, `xarray`, `netCDF4`, `numpy`, `pandas`, `scipy`, `matplotlib`, and the MET

@@ -10,3 +10,5 @@ These tables export the saved values used in the complete eight-parameter figure
 - `plotted_data.json`: the original plotting record; it also includes the six-parameter main displays.
 
 The ZIP input cache retains the original NPZ/CSV/JSON bytes and is the authoritative input for rerendering. CSV exports are an additional inspection format. Error bars summarize variability across ten events, not standard errors or confidence intervals for the mean. The case involving GFS is separate and is not included in cross-event averages.
+
+Negative-SRH frequency bias in `frequency_bias.csv`, `case_frequency_bias.csv` and `plotted_data.json` was corrected to the P25 lower tail on 21 October 2026. The associated selected dispersion scales were recomputed from the same ten events. All other table values are unchanged. The [correction record](../negative_srh_threshold_correction.json) documents old/new values and zero-threshold limitations.

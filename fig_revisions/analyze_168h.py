@@ -55,7 +55,7 @@ times = [
 
 
 def compute_fb(fcst, real, param):
-    if param in ['cin']:
+    if param in ['cin', 'negative_helicity']:
         p_thresh = np.nanpercentile(real, 25)
         n_real = np.nansum((real <= p_thresh).astype(float))
         n_fcst = np.nansum((fcst <= p_thresh).astype(float))
@@ -501,3 +501,4 @@ if __name__ == '__main__':
     generate_report(fb_all)
 
     print(f'\nAll outputs saved to {OUT_DIR}')
+
