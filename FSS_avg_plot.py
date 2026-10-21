@@ -91,56 +91,46 @@ def plot_group(group):
 
         # Loop over each model and plot
         for model in group_models:
-            try:
-                # Load data
-                data_path = _resolve_data_path(
-                    model, parameter, data_root, data_root)
+            # Load data
+            data_path = _resolve_data_path(
+                model, parameter, data_root, data_root)
 
-                if not data_path:
-                    raise FileNotFoundError
+            if not data_path:
+                raise FileNotFoundError
 
-                data = np.load(data_path)
+            data = np.load(data_path)
 
-                mean_scores = data['mean']
-                fss_mean = mean_scores[:, 2]
+            mean_scores = data['mean']
+            fss_mean = mean_scores[:, 2]
 
-                # Asymmetric error bar: prefer lower_err/upper_err, fallback to symmetric dispersion
-                if 'lower_err' in data and 'upper_err' in data:
-                    fss_lower = data['lower_err'][:, 2]
-                    fss_upper = data['upper_err'][:, 2]
-                    fss_yerr = np.vstack([fss_lower, fss_upper])
-                else:
-                    std_scores = data['dispersion']
-                    fss_std = std_scores[:, 2]
-                    fss_yerr = fss_std
+            # Appendix B selects the scale; percentile fields are not used here.
+            fss_yerr = data['dispersion'][:, 2]
+            assert np.all(np.isfinite(fss_mean))
+            assert np.all(np.isfinite(fss_yerr))
 
-                color = model_colors[model]
-                label = model_labels.get(model, model)
+            color = model_colors[model]
+            label = model_labels.get(model, model)
 
-                # Plot mean line with asymmetric error bars
-                plt.errorbar(
-                    lead_times,
-                    fss_mean,
-                    yerr=fss_yerr,
-                    color=color,
-                    ecolor=color,
-                    elinewidth=1.6,
-                    capsize=4,
-                    capthick=1.6,
-                    linewidth=2.5,
-                    label=label,
-                    marker='o',
-                    markersize=6,
-                    markerfacecolor=color,
-                    markeredgecolor='white',
-                    markeredgewidth=1)
+            # Plot the arithmetic mean with the selected cross-case scale
+            plt.errorbar(
+                lead_times,
+                fss_mean,
+                yerr=fss_yerr,
+                color=color,
+                ecolor=color,
+                elinewidth=1.6,
+                capsize=4,
+                capthick=1.6,
+                linewidth=2.5,
+                label=label,
+                marker='o',
+                markersize=6,
+                markerfacecolor=color,
+                markeredgecolor='white',
+                markeredgewidth=1)
 
-                print(f"  Successfully loaded model: {model}")
+            print(f"  Successfully loaded model: {model}")
 
-            except FileNotFoundError:
-                print(f"  Warning: Data file for model {model} not found, skipping")
-            except Exception as e:
-                print(f"  Warning: Error loading model {model}: {e}, skipping")
 
         # Add grid lines
         plt.grid(True, alpha=0.3, linestyle='--', linewidth=0.5)

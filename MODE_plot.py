@@ -100,48 +100,36 @@ def plot_parameter(
             'ax': axes[0],
             'title': 'Total Interest',
             'mean_col': 'interest_mean',
-            'lower_col': 'interest_lower',
-            'upper_col': 'interest_upper',
             'ylim': (0, 1)
         },
         {
             'ax': axes[1],
             'title': 'Centroid Distance (grid cells)',
             'mean_col': 'cent_dist_mean',
-            'lower_col': 'cent_dist_lower',
-            'upper_col': 'cent_dist_upper',
             'ylim': (0, 35)
         },
         {
             'ax': axes[2],
             'title': 'Boundary Distance (grid cells)',
             'mean_col': 'bound_dist_mean',
-            'lower_col': 'bound_dist_lower',
-            'upper_col': 'bound_dist_upper',
             'ylim': (0, 35)
         },
         {
             'ax': axes[3],
             'title': 'Angle Interest',
             'mean_col': 'angle_mean',
-            'lower_col': 'angle_lower',
-            'upper_col': 'angle_upper',
             'ylim': (0, 1)
         },
         {
             'ax': axes[4],
             'title': 'Area Ratio',
             'mean_col': 'area_mean',
-            'lower_col': 'area_lower',
-            'upper_col': 'area_upper',
             'ylim': (0, 1)
         },
         {
             'ax': axes[5],
             'title': 'Intersection Area Ratio',
             'mean_col': 'int_area_mean',
-            'lower_col': 'int_area_lower',
-            'upper_col': 'int_area_upper',
             'ylim': (0, 1)
         },
     ]
@@ -151,8 +139,7 @@ def plot_parameter(
         csv_path = _resolve_csv_path(model, param, data_root, data_root)
 
         if not csv_path:
-            print(f"Warning: file not found, skipping {csv_path}")
-            continue
+            raise FileNotFoundError(f"Missing MODE summary: {model}/{param}")
 
         df = pd.read_csv(csv_path)
         df = df.sort_values('Lead Time (h)')
@@ -164,37 +151,21 @@ def plot_parameter(
         for sp_idx, sp in enumerate(subplots):
             ax = sp['ax']
             mean_col = sp['mean_col']
-            lower_col = sp['lower_col']
-            upper_col = sp['upper_col']
-
-            # Check if column exists
-            if mean_col not in df.columns:
-                continue
 
             y_mean = df[mean_col].values
 
-            # Prefer asymmetric lower/upper, fallback to symmetric disp
-            if lower_col in df.columns and upper_col in df.columns:
-                y_lower = df[lower_col].values
-                y_upper = df[upper_col].values
-            else:
-                disp_col = sp.get('disp_col', '')
-                if disp_col in df.columns:
-                    y_lower = df[disp_col].values
-                    y_upper = df[disp_col].values
-                else:
-                    y_lower = np.zeros_like(y_mean)
-                    y_upper = np.zeros_like(y_mean)
+            # The selected Appendix B scale has one arm on either side.
+            disp_col = mean_col.replace('_mean', '_disp')
+            y_lower = df[disp_col].values
+            y_upper = df[disp_col].values
 
-            # Skip lead times that are all NaN
-            mask = ~np.isnan(y_mean)
-            if not any(mask):
-                continue
-
-            x_plot = x[mask]
-            y_mean_plot = y_mean[mask]
-            y_lower_plot = y_lower[mask]
-            y_upper_plot = y_upper[mask]
+            assert np.all(np.isfinite(y_mean))
+            assert np.all(np.isfinite(y_lower))
+            assert np.all(np.isfinite(y_upper))
+            x_plot = x
+            y_mean_plot = y_mean
+            y_lower_plot = y_lower
+            y_upper_plot = y_upper
 
             # Clip lower bound to ylim minimum (avoid negative error bars for non-negative metrics)
             if sp['ylim'] is not None:
@@ -274,38 +245,25 @@ def plot_total_interest(
         csv_path = _resolve_csv_path(model, param, data_root, data_root)
 
         if not csv_path:
-            print(f"Warning: file not found, skipping {csv_path}")
-            continue
+            raise FileNotFoundError(f"Missing MODE summary: {model}/{param}")
 
         df = pd.read_csv(csv_path)
         df = df.sort_values('Lead Time (h)')
 
-        if 'interest_mean' not in df.columns:
-            continue
-
         x = df['Lead Time (h)'].values
         y_mean = df['interest_mean'].values
 
-        # Prefer asymmetric lower/upper
-        if 'interest_lower' in df.columns and 'interest_upper' in df.columns:
-            y_lower = df['interest_lower'].values
-            y_upper = df['interest_upper'].values
-        else:
-            y_disp = (
-                df['interest_disp'].values if 'interest_disp' in df.columns
-                else np.zeros_like(y_mean)
-            )
-            y_lower = y_disp
-            y_upper = y_disp
+        # Use the Appendix B scale stored by MODE_avg.py.
+        y_lower = df['interest_disp'].values
+        y_upper = df['interest_disp'].values
 
-        mask = ~np.isnan(y_mean)
-        if not any(mask):
-            continue
-
-        x_plot = x[mask]
-        y_mean_plot = y_mean[mask]
-        y_lower_plot = y_lower[mask]
-        y_upper_plot = y_upper[mask]
+        assert np.all(np.isfinite(y_mean))
+        assert np.all(np.isfinite(y_lower))
+        assert np.all(np.isfinite(y_upper))
+        x_plot = x
+        y_mean_plot = y_mean
+        y_lower_plot = y_lower
+        y_upper_plot = y_upper
 
         # Clip lower bound to 0 (interest range [0,1])
         y_lower_plot = np.minimum(y_lower_plot, y_mean_plot)
