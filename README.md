@@ -12,6 +12,24 @@ All the necessary code for
 The repository contains the full analysis pipeline (model output data → tornado-relevant
 parameters → verification metrics → figures) together with the final manuscript figures.
 
+## Model inference and GFS data acquisition
+
+The model-specific code is available together on `main`:
+
+| Component | Directory |
+|---|---|
+| FengWu V1 / V2 | [models/fengwu/](models/fengwu/) |
+| FuXi | [models/fuxi/](models/fuxi/) |
+| Pangu-Weather | [models/pangu/](models/pangu/) |
+| GFS download and conversion | [data_download/gfs/](data_download/gfs/) |
+
+Read [Model workflows](docs/model-workflows.md) for working directories, dependencies,
+entry points, and the handoff to the evaluation pipeline below. Scripts and bundled
+resources were copied without changing their contents from the original model branches;
+[the migration manifest](docs/model-code-migration.json) records their exact source commits
+and Git blob IDs. The original branches remain available. The
+`FSS_neighborhood_size_verify` branch is unchanged and is not included in this migration.
+
 ## 1. Compute tornado-relevant parameters
 
 Run `tornado_parameters.py` to get the parameters (CAPE, K-Index, SRH, LCL, LFC, CIN, etc.) once

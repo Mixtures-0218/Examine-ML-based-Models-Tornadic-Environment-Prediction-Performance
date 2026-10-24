@@ -16,3 +16,18 @@ MODE_output/
 __pycache__/
 *.pyc
 .idea/
+
+# Local credentials
+rdams_token.txt
+.cdsapirc
+
+# Model weights and generated model inputs / outputs
+/models/**/*.onnx
+/models/fengwu/input_data/
+/models/fengwu/output_data/
+/models/pangu/input_data/
+/models/pangu/output_data/
+/models/fuxi/ERA5*/
+/models/fuxi/inputs/
+/models/fuxi/outputs/
+/data_download/gfs/gfs_forecast_data/

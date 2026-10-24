@@ -1,0 +1,184 @@
+{
+  "base_main": "4ed084e5360a601337490903a46df21e354785a0",
+  "unchanged_branch": {
+    "name": "FSS_neighborhood_size_verify",
+    "commit": "64a862acdc1dee0a45d643dbfd4c4d5d40db65ed"
+  },
+  "files": [
+    {
+      "source_branch": "Fengwu",
+      "source_commit": "656515c25f3fc9e3eaa1a7259cd9d0e35b9d1904",
+      "source_path": "README.md",
+      "destination": "models/fengwu/README.md",
+      "blob_sha": "2e5a92e9f09ccc54191c09d04d03ee472a7311a6",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Fengwu",
+      "source_commit": "656515c25f3fc9e3eaa1a7259cd9d0e35b9d1904",
+      "source_path": "data_mean.npy",
+      "destination": "models/fengwu/data_mean.npy",
+      "blob_sha": "b79998952c03d26106ecc23a9cdfc436d0ffde10",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Fengwu",
+      "source_commit": "656515c25f3fc9e3eaa1a7259cd9d0e35b9d1904",
+      "source_path": "data_std.npy",
+      "destination": "models/fengwu/data_std.npy",
+      "blob_sha": "805d54884a3a6dc0cda635ec467e46353e2cdbb7",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Fengwu",
+      "source_commit": "656515c25f3fc9e3eaa1a7259cd9d0e35b9d1904",
+      "source_path": "era5_data_get.py",
+      "destination": "models/fengwu/era5_data_get.py",
+      "blob_sha": "ea4e2a23a8c59b912a8c3c6558e25b7cbf74f2c3",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Fengwu",
+      "source_commit": "656515c25f3fc9e3eaa1a7259cd9d0e35b9d1904",
+      "source_path": "inference.py",
+      "destination": "models/fengwu/inference.py",
+      "blob_sha": "5670d7ee5e0afb367ea20b569e958fb1fe399b02",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Fengwu",
+      "source_commit": "656515c25f3fc9e3eaa1a7259cd9d0e35b9d1904",
+      "source_path": "output_decode.py",
+      "destination": "models/fengwu/output_decode.py",
+      "blob_sha": "4c6e0fece26bf71766329359f05eb0ddb14e087a",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Fuxi",
+      "source_commit": "8fb84f5f50d7e097f53665dc917e3df2d9f8473c",
+      "source_path": "README.md",
+      "destination": "models/fuxi/README.md",
+      "blob_sha": "159757306d34d965849dbc6eaf55e9ee1eab4b0b",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Fuxi",
+      "source_commit": "8fb84f5f50d7e097f53665dc917e3df2d9f8473c",
+      "source_path": "build_inputs.py",
+      "destination": "models/fuxi/build_inputs.py",
+      "blob_sha": "b891719028c523b763f2c794f561c15b5ec1d534",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Fuxi",
+      "source_commit": "8fb84f5f50d7e097f53665dc917e3df2d9f8473c",
+      "source_path": "era5_get_new.py",
+      "destination": "models/fuxi/era5_get_new.py",
+      "blob_sha": "334245be21a053bb6980f66789d9ddf38493c604",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Fuxi",
+      "source_commit": "8fb84f5f50d7e097f53665dc917e3df2d9f8473c",
+      "source_path": "fuxi.py",
+      "destination": "models/fuxi/fuxi.py",
+      "blob_sha": "42f486049000fd4685d3b05e25e6f5e0ef6ec622",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Fuxi",
+      "source_commit": "8fb84f5f50d7e097f53665dc917e3df2d9f8473c",
+      "source_path": "test.py",
+      "destination": "models/fuxi/test.py",
+      "blob_sha": "9dac8ecad09009afb5bd655d6af00c1efacbbfd8",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Fuxi",
+      "source_commit": "8fb84f5f50d7e097f53665dc917e3df2d9f8473c",
+      "source_path": "util.py",
+      "destination": "models/fuxi/util.py",
+      "blob_sha": "92f87bf1f80218f195e46e15f5712d0b99c29b25",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Pangu-weather",
+      "source_commit": "9140ef2e02bda1664afa7abd2597d2ba8c95eca0",
+      "source_path": "README.md",
+      "destination": "models/pangu/README.md",
+      "blob_sha": "ae9728364328fc902966d917250a8bcc4e6c685a",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Pangu-weather",
+      "source_commit": "9140ef2e02bda1664afa7abd2597d2ba8c95eca0",
+      "source_path": "era5_data_get.py",
+      "destination": "models/pangu/era5_data_get.py",
+      "blob_sha": "cc7bf924caaae9d1b039bed1fa7ed917d97a4674",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Pangu-weather",
+      "source_commit": "9140ef2e02bda1664afa7abd2597d2ba8c95eca0",
+      "source_path": "inference_gpu.py",
+      "destination": "models/pangu/inference_gpu.py",
+      "blob_sha": "7aab8515010c450a6caa9c127971332f91448806",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "Pangu-weather",
+      "source_commit": "9140ef2e02bda1664afa7abd2597d2ba8c95eca0",
+      "source_path": "output_decode.py",
+      "destination": "models/pangu/output_decode.py",
+      "blob_sha": "78a6bfbf17527347819d5225636b467b3642fbd3",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "GFS_download",
+      "source_commit": "ef78219ef6b2ae5a010d23e1f0bea60077ce36a7",
+      "source_path": "GFS Set Up_Converting Data.docx",
+      "destination": "data_download/gfs/GFS Set Up_Converting Data.docx",
+      "blob_sha": "7e6de7815a2d1490219a1a858d95cd847c4a3e4d",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "GFS_download",
+      "source_commit": "ef78219ef6b2ae5a010d23e1f0bea60077ce36a7",
+      "source_path": "README.md",
+      "destination": "data_download/gfs/README.md",
+      "blob_sha": "32d2c6d20b6b9c2075c9e770cb858d5b01234e2b",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "GFS_download",
+      "source_commit": "ef78219ef6b2ae5a010d23e1f0bea60077ce36a7",
+      "source_path": "convert_GRIB2_NC.py",
+      "destination": "data_download/gfs/convert_GRIB2_NC.py",
+      "blob_sha": "be9dea4c5cfb759a7818353f81ebb1b119455710",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "GFS_download",
+      "source_commit": "ef78219ef6b2ae5a010d23e1f0bea60077ce36a7",
+      "source_path": "gfs_data_get.py",
+      "destination": "data_download/gfs/gfs_data_get.py",
+      "blob_sha": "dd6850d32cc7a01922476c9c6511973df75ab1a4",
+      "mode": "100644"
+    },
+    {
+      "source_branch": "GFS_download",
+      "source_commit": "ef78219ef6b2ae5a010d23e1f0bea60077ce36a7",
+      "source_path": "run_gfs_download.py",
+      "destination": "data_download/gfs/run_gfs_download.py",
+      "blob_sha": "8f8938c1344e41d139d1e7100f4489bde4e1457a",
+      "mode": "100644"
+    }
+  ],
+  "excluded_files": [
+    {
+      "branch": "GFS_download",
+      "path": "rdams_token.txt",
+      "reason": "Local authentication credential; never copy into main."
+    }
+  ]
+}
