@@ -180,5 +180,32 @@
       "path": "rdams_token.txt",
       "reason": "Local authentication credential; never copy into main."
     }
+  ],
+  "subsequent_snapshots": [
+    {
+      "source": "Local T7 research snapshot: Research/FengWu-2015",
+      "base_main_commit": "fdcc6cc8d680554a80d7b706f142ecc6c5ec2402",
+      "scope": "Byte-preserved Python script synchronization only; no downloads or GPU rerun.",
+      "files": [
+        {
+          "source_path": "Research/FengWu-2015/era5_data_get.py",
+          "destination": "models/fengwu/era5_data_get.py",
+          "blob_sha": "aad2176d27a9aa7b3893dd3dda7f3b132e050271",
+          "size": 7123
+        },
+        {
+          "source_path": "Research/FengWu-2015/inference.py",
+          "destination": "models/fengwu/inference.py",
+          "blob_sha": "5670d7ee5e0afb367ea20b569e958fb1fe399b02",
+          "size": 3650
+        },
+        {
+          "source_path": "Research/FengWu-2015/output_decode.py",
+          "destination": "models/fengwu/output_decode.py",
+          "blob_sha": "976e13ad051e4d91ec49d8e2c23487f014c7f602",
+          "size": 3114
+        }
+      ]
+    }
   ]
 }

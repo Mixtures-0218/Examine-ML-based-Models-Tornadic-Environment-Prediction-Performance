@@ -1,8 +1,8 @@
 # Model workflows
 
 The model and download scripts coexist on `main`; use the component directory as
-the working directory. Their relative imports, input names, case settings, and
-scientific calculations are unchanged. The original branch READMEs are retained
+the working directory. FengWu uses the subsequent T7 snapshot described below;
+the other components retain their initial branch snapshots. The original branch READMEs are retained
 verbatim; the working-directory instructions and clarifications below accompany them.
 
 ## Component dependencies
@@ -24,30 +24,40 @@ external inputs, not bundled in this repository.
 
 ## FengWu V1 / V2
 
-The original entry point is `output_decode.py`, with `models/fengwu/` as its
-working directory. This preserved snapshot is not a runnable end-to-end workflow:
+The three Python scripts are synchronized unchanged from the local T7 research
+snapshot `Research/FengWu-2015`. In this snapshot, `era5_data_get.py` defines
+`init_time_list` for the five lead times and uses matching lead-specific input names.
+The download function maps the earlier field (`T0 - 6 hours`) to `input1` and
+the initialization field (`T0`) to `input2`; inference concatenates them in that order.
 
-- `inference.py` imports `init_time_list`, but `era5_data_get.py` defines
-  `init_time` instead. The import cannot complete successfully.
-- The downloader saves `input1.npy` and `input2.npy`, while inference reads
-  lead-specific filenames such as `input1_24.npy` and `input2_24.npy`.
-
-Resolve these existing interfaces in a separate change before attempting the full
-FengWu workflow. They are documented here without altering the historical scripts.
+This snapshot defaults to existing prepared arrays. The `cdsapi` import and the
+bottom-level download/conversion calls are commented out; no ERA5 downloads occur
+by default. Place `input1_24.npy` / `input2_24.npy` and the corresponding pairs
+for 48, 72, 120, and 168 hours under `input_data/`.
+To regenerate inputs, the CDS import and download/conversion calls must be enabled
+with local CDS credentials.
 
 Place `fengwu_v1.onnx` and `fengwu_v2.onnx` in this directory. The bundled
-`data_mean.npy` and `data_std.npy` are required normalization resources and remain
-version controlled.
+`data_mean.npy` and `data_std.npy` remain required normalization resources.
 
-Before running, inspect the case dates in `era5_data_get.py` and `inference.py`.
+From the repository root, with all prepared inputs and weights available:
+
+```bash
+cd models/fengwu
+python output_decode.py
+```
+
+The decoder imports inference, which imports the input-preparation module. These
+imports execute top-level code: the command runs both model versions at all five lead
+times before decoding. Do not run inference separately and then assume that starting
+the decoder skips it. Inputs and outputs resolve under this working directory in
+`input_data/` and `output_data/`.
+
+The case is hard-coded to `2015-05-07 02:00 UTC` in both the input-preparation and
+inference scripts. Keep those target times aligned when selecting another case.
 The legacy README's `inferece.py` refers to `inference.py`.
-The decoder imports `inference.py`, which imports the ERA5 downloader. Imports
-execute top-level code: starting the decoder can trigger downloads before reaching
-the import failure described above. With the interfaces reconciled, this entry
-point also runs inference before decoding.
-Do not run inference separately and then assume that starting the decoder skips it.
-Inputs and outputs resolve under this working directory in `input_data/` and
-`output_data/`.
+This synchronization preserves the T7 scripts as found, including existing comments
+and import behavior; it is not a new GPU validation of historical outputs.
 
 ## FuXi
 
@@ -128,7 +138,9 @@ outside this migration and remains at its original commit.
 ## Verification scope
 
 Migration integrity is checked against the source Git blob IDs in
-[model-code-migration.json](model-code-migration.json). Syntax checks do not import
+[model-code-migration.json](model-code-migration.json). Its `files` list records the
+initial branch migration; entries in `subsequent_snapshots` supersede those paths
+with the current T7 source blob IDs. Syntax checks do not import
 or execute the scripts. Full downloads and GPU inference require external credentials,
 model weights, input data, and compatible runtime environments; they are not established
 by a directory-only migration.

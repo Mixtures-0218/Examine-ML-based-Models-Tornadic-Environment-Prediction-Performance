@@ -25,9 +25,11 @@ The model-specific code is available together on `main`:
 
 Read [Model workflows](docs/model-workflows.md) for working directories, dependencies,
 entry points, and the handoff to the evaluation pipeline below. Scripts and bundled
-resources were copied without changing their contents from the original model branches;
-[the migration manifest](docs/model-code-migration.json) records their exact source commits
-and Git blob IDs. The original branches remain available. The
+resources were initially copied from the original model branches. The FengWu Python
+scripts have since been synchronized byte-for-byte with the local T7 research snapshot
+in `Research/FengWu-2015`; inference itself was already identical.
+[The migration manifest](docs/model-code-migration.json) records the initial branch
+sources and the subsequent T7 snapshot, including Git blob IDs. The original branches remain available. The
 `FSS_neighborhood_size_verify` branch is unchanged and is not included in this migration.
 
 ## 1. Compute tornado-relevant parameters

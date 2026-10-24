@@ -2,7 +2,7 @@ import os
 import netCDF4 as nc
 import numpy as np
 from inference import models
-
+import os
 
 output_path = os.path.join(os.getcwd(), "output_data")
 
