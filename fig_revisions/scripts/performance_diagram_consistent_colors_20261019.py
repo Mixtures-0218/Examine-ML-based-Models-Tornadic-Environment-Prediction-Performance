@@ -234,8 +234,8 @@ def _place_lead_time_labels(ax, all_models_data):
     colors = {'pangu': '#1f77b4', 'fengwu_v1': '#2e8b57', 'fengwu_v2': '#C87500', 'fuxi': '#d62728'}
     annotations = []
     layout_title = ax.get_title()
-    if layout_title == '(e) LCL':
-        layout_title = '(f) LCL'
+    if layout_title == '(e) LCPL':
+        layout_title = '(f) LCPL'
     if layout_title == '(f) STP':
         layout_title = '(h) STP'
     for entry in layouts[layout_title]:
@@ -272,7 +272,7 @@ def main():
         ('cin', '(b) CIN'),
         ('k_idx', '(c) K Index'),
         ('positive_helicity', '(d) 0-3 km Positive SRH'),
-        ('lcl', '(e) LCL'),
+        ('lcl', '(e) LCPL'),
         ('stp', '(f) STP')]
     plt.rcParams.update({
         'font.family': 'sans-serif',
