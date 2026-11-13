@@ -1,8 +1,8 @@
 """Generate the manuscript MODE object-count figure (Fig. 6, 1110 revision).
 
-Six main-text parameters are shown as small multiples: the number of high-value
-objects identified in the forecast fields of each parameter, compared with the
-number of objects in the ERA5 reference field. A seventh panel shows the
+Six main-text parameters are shown as small multiples: the number of forecast
+high-value objects that are matched to an ERA5 object, compared with the number
+of objects in the ERA5 reference field. Unmatched forecast objects are excluded. A seventh panel shows the
 centroid displacement of matched STP objects.
 
 Dispersion bars follow the scale-selection procedure of Appendix B in the
@@ -168,7 +168,7 @@ def main():
             for lead in LEADS:
                 subset = data[(data.model == model) & (data.param == param)
                               & (data.lead == lead)]
-                per_event = subset.set_index("time").n_fcst
+                per_event = subset.set_index("time").n_match
                 scale, method = selected_dispersion(per_event.values)
                 counts[param][model][lead] = {
                     "mean": float(per_event.mean()),
@@ -246,7 +246,7 @@ def main():
         axis.grid(axis="y", color="0.85", linewidth=0.4)
         axis.set_axisbelow(True)
         if index % 3 == 0:
-            axis.set_ylabel("Objects per case")
+            axis.set_ylabel("Matched objects per case")
         if index >= 3:
             axis.set_xlabel("Lead Time (hours)")
 
