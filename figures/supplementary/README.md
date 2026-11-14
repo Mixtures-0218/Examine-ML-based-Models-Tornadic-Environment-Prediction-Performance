@@ -1,13 +1,13 @@
 # Complete eight-parameter results
 
-The current manuscript displays six parameters in its repeated main comparisons: CAPE, K Index, positive 0–3 km SRH, LCL, LFC and STP. This collection retains all eight parameters, including CIN and negative 0–3 km SRH. It replaces the long Appendix C figure collection in the working manuscript.
+The current manuscript displays six parameters in its repeated main comparisons: CAPE, K Index, positive 0–3 km SRH, LCPL, LFCP and STP. This collection retains all eight parameters, including CIN and negative 0–3 km SRH. It replaces the long Appendix C figure collection in the working manuscript.
 
 The figures use the same event selection, scores, averaging procedure, selected dispersion scales and model colors as the main analysis. S1 and S2 jointly contain the complete eight-parameter performance diagram; each remaining figure contains all eight parameters.
 
 | Figure | PDF | Content |
 |---|---|---|
 | S1 | [S1_performance_part1.pdf](S1_performance_part1.pdf) | Performance diagrams: CAPE, CIN, K Index and positive SRH |
-| S2 | [S2_performance_part2.pdf](S2_performance_part2.pdf) | Performance diagrams: negative SRH, LCL, LFC and STP |
+| S2 | [S2_performance_part2.pdf](S2_performance_part2.pdf) | Performance diagrams: negative SRH, LCPL, LFCP and STP |
 | S3 | [S3_fss.pdf](S3_fss.pdf) | Eight-parameter FSS across ten events |
 | S4 | [S4_mode.pdf](S4_mode.pdf) | Eight-parameter MODE total interest across ten events |
 | S5 | [S5_frequency_bias.pdf](S5_frequency_bias.pdf) | Eight-parameter frequency bias at 168 h across ten events |
@@ -20,7 +20,7 @@ CIN scores were low and fluctuated across lead times rather than following a con
 
 ## Figure conventions
 
-S1: (a) CAPE, (b) CIN, (c) K Index and (d) positive 0–3 km SRH. S2: (e) negative 0–3 km SRH, (f) LCL, (g) LFC and (h) STP. Curved contours denote CSI and straight reference lines denote frequency bias. Colors/markers identify model versions, and labels/leader lines identify 24, 48, 72, 120 and 168 h. The ERA5 P25 threshold is used for CIN and negative SRH; P75 is used for the other parameters.
+S1: (a) CAPE, (b) CIN, (c) K Index and (d) positive 0–3 km SRH. S2: (e) negative 0–3 km SRH, (f) LCPL, (g) LFCP and (h) STP. Curved contours denote CSI and straight reference lines denote frequency bias. Colors/markers identify model versions, and labels/leader lines identify 24, 48, 72, 120 and 168 h. The ERA5 P25 threshold is used for CIN and negative SRH; P75 is used for the other parameters.
 
 S3/S4 show arithmetic means across ten events. Error bars extend by one selected cross-event dispersion scale on either side, clipped to 0–1. Selection among sample SD, trimmed SD and robust MAD/IQR scales follows Appendix B of the manuscript. These bars describe cross-event variability, not uncertainty in the mean. Horizontal marker offsets and pale gray bands are display groups. MODE total interest and FSS describe different properties and are not directly comparable in magnitude. FSS uses a 3×3 grid neighborhood.
 

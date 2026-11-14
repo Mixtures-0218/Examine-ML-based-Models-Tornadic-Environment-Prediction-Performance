@@ -1,0 +1,14 @@
+# Python 3.11.5; versions used to produce the manuscript figures.
+numpy==1.26.4
+pandas==2.3.1
+scipy==1.17.1
+matplotlib==3.10.9
+xarray==2025.7.1
+netCDF4==1.6.2
+metpy==1.6.1
+cartopy==0.22.0
+scikit-image==0.20.0
+scikit-learn==1.3.0
+
+# The MODE interest calculations additionally require the external MET package
+# (Model Evaluation Tools), which is not distributed on PyPI.
