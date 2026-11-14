@@ -1,7 +1,7 @@
 # Current manuscript figures
 
-These files match the current manuscript: 14 figures, including the object-based MODE figure
-(Fig. 6) and the ten-event MODE total-interest figure in Appendix A.3 (Fig. 14).
+These files match the current manuscript: 13 figures, including the object-based MODE figure
+(Fig. 6). The ten-event MODE total interest is available in the supplementary collection (S4).
 
 | Manuscript figure | File | Source |
 |---|---|---|
@@ -18,7 +18,6 @@ These files match the current manuscript: 14 figures, including the object-based
 | 11 | [fig13_stp_lead24h_revised.pdf](fig13_stp_lead24h_revised.pdf) | saved asset; STP fields are computed by `STP.py` |
 | 12 | [fig12_case_fb_LFC_focus.pdf](fig12_case_fb_LFC_focus.pdf) | `fig_revisions/scripts/parameter_focus_appendix_20261020.py` |
 | 13 | [fig13_case_mode_LFC_focus.pdf](fig13_case_mode_LFC_focus.pdf) | `fig_revisions/scripts/parameter_focus_appendix_20261020.py` |
-| 14 | [figA_mode_total_interest.pdf](figA_mode_total_interest.pdf) | `fig_revisions/scripts/parameter_focus_appendix_20261020.py` (six-parameter MODE total-interest grid, `fig6_mode_LFC_focus.pdf`) |
 
 Parameter names follow the manuscript: LCPL for the lifted condensation pressure level and LFCP
 for the LFC pressure level. The complete eight-parameter comparisons are in
