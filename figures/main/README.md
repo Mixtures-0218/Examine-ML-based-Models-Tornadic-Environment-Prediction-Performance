@@ -19,6 +19,6 @@ These files match the current manuscript: 13 figures, including the object-based
 | 12 | [fig12_case_fb_LFC_focus.pdf](fig12_case_fb_LFC_focus.pdf) | `fig_revisions/scripts/parameter_focus_appendix_20261020.py` |
 | 13 | [fig13_case_mode_LFC_focus.pdf](fig13_case_mode_LFC_focus.pdf) | `fig_revisions/scripts/parameter_focus_appendix_20261020.py` |
 
-Parameter names follow the manuscript: LCPL for the lifted condensation pressure level and LFCP
-for the LFC pressure level. The complete eight-parameter comparisons are in
+Parameter names follow the manuscript: LCPL for the lifted condensation pressure level and PLFC
+for the pressure level of free convection. The complete eight-parameter comparisons are in
 [the supplementary collection](../supplementary/README.md).

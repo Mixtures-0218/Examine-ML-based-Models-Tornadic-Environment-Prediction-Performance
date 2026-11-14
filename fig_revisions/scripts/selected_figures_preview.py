@@ -89,7 +89,7 @@ def figure11():
     fig.subplots_adjust(left=0.08, right=0.985, bottom=0.16, top=0.85, wspace=0.28)
     panels = [
         ('CAPE', cape_biases, '#1f77b4', (-500, 1080), r'$\Delta$CAPE (J kg$^{-1}$)'),
-        ('LFCP', lfc_biases, '#ff7f0e', (-45, 100), r'$\Delta$LFCP (hPa)'),
+        ('PLFC', lfc_biases, '#ff7f0e', (-45, 100), r'$\Delta$PLFC (hPa)'),
     ]
     audit = {'coordinate_provenance': 'legacy.ORIG_DTHETA; reconstructed from old figure',
              'cases': legacy.CASES, 'theta_e': coordinates, 'panels': []}

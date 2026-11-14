@@ -34,7 +34,7 @@ sources and the subsequent T7 snapshot, including Git blob IDs. The original bra
 
 ## 1. Compute tornado-relevant parameters
 
-Run `tornado_parameters.py` to get the parameters (CAPE, K-Index, SRH, LCPL, LFCP, CIN, etc.) once
+Run `tornado_parameters.py` to get the parameters (CAPE, K-Index, SRH, LCPL, PLFC, CIN, etc.) once
 all the necessary model output data have been obtained. Change the variables `models` and `times`
 to control which model and which event time to compute.
 
@@ -102,7 +102,7 @@ times. The output figures are stored in the `avg_fss` folder.
 
 ## 7. Current manuscript figures and complete results
 
-The current figure index is [figures/main/README.md](figures/main/README.md), numbered 1–13 as in the current manuscript, including the object-based MODE figure (Fig. 6); the MODE total-interest grid is in the supplementary collection (S4). Main Figures 4–7 and 12–13 show CAPE, K Index, positive 0–3 km SRH, LCPL, LFCP and STP.
+The current figure index is [figures/main/README.md](figures/main/README.md), numbered 1–13 as in the current manuscript, including the object-based MODE figure (Fig. 6); the MODE total-interest grid is in the supplementary collection (S4). Main Figures 4–7 and 12–13 show CAPE, K Index, positive 0–3 km SRH, LCPL, PLFC and STP.
 
 The [complete eight-parameter collection](figures/supplementary/README.md) includes CIN and negative SRH, with seven vector PDF figures (S1–S7), numerical CSV/JSON tables, a byte-preserved input cache, checksums and a rerendering command. These results accompany the manuscript rather than occupying a seven-page Appendix C.
 
