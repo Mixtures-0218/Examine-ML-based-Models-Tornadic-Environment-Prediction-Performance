@@ -45,7 +45,7 @@ MODEL_LABELS = {"pangu": "Pangu", "fengwu_v1": "FengWu v1",
 PARAMS = ["cape", "k_idx", "positive_helicity", "lcl", "lfc", "stp"]
 PARAM_LABELS = {"cape": "CAPE", "k_idx": "K Index",
                 "positive_helicity": "0-3 km Positive SRH",
-                "lcl": "LCPL", "lfc": "LFC", "stp": "STP"}
+                "lcl": "LCPL", "lfc": "LFCP", "stp": "STP"}
 LEADS = [24, 48, 72, 120, 168]
 GRID_KM = 25.0
 COLORS = {"pangu": "#1f77b4", "fengwu_v1": "#2e8b57",
