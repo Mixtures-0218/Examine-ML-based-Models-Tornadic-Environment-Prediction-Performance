@@ -93,6 +93,8 @@ def selected_dispersion(data):
     values = values[~np.isnan(values)]
     if len(values) == 0:
         return np.nan, "no_data"
+    if len(values) < 8:
+        return np.nan, "insufficient"
 
     info = assess_distribution(values)
     if info["dist_type"] == "normal":
@@ -139,6 +141,17 @@ def load_case_summaries():
                         "cent_grid": float(row["Mean Centroid Dist (grid)"]),
                     })
     return pd.DataFrame(records)
+
+
+def _jsonable(value):
+    """Convert non-finite floats to None so the JSON stays valid."""
+    if isinstance(value, dict):
+        return {key: _jsonable(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_jsonable(item) for item in value]
+    if isinstance(value, float) and not np.isfinite(value):
+        return None
+    return value
 
 
 def main():
@@ -251,26 +264,53 @@ def main():
             axis.set_xlabel("Lead Time (hours)")
 
     for model_index, model in enumerate(MODELS):
-        means, lower_arm, upper_arm = [], [], []
+        means, lower_arm, upper_arm, valid = [], [], [], []
         for lead in LEADS:
             entry = displacement[model][lead]
             means.append(entry["mean"])
-            if np.isfinite(entry["dispersion"]) and np.isfinite(entry["mean"]):
+            usable = (entry["n_events"] >= 8
+                      and np.isfinite(entry["dispersion"])
+                      and np.isfinite(entry["mean"]))
+            valid.append(usable)
+            if usable:
                 lower_arm.append(min(entry["dispersion"], entry["mean"]))
                 upper_arm.append(min(entry["dispersion"],
                                      YMAX_DISP - entry["mean"]))
             else:
                 lower_arm.append(np.nan)
                 upper_arm.append(np.nan)
+
         shift = ScaledTranslation(OFFSETS[model_index] / 72, 0,
                                   figure.dpi_scale_trans)
-        axis_disp.errorbar(
-            LEADS, means, yerr=np.vstack([lower_arm, upper_arm]),
-            transform=axis_disp.transData + shift, color=COLORS[model],
-            ecolor=COLORS[model], marker=MARKERS[model_index],
-            markersize=3.2, markeredgecolor="white", markeredgewidth=0.3,
-            linewidth=0.9, elinewidth=0.7, capsize=1.0, capthick=0.7,
-            label=MODEL_LABELS[model])
+        axis_disp.plot(LEADS, means, transform=axis_disp.transData + shift,
+                       color=COLORS[model], linewidth=0.9, zorder=4)
+
+        valid_x = [x for x, flag in zip(LEADS, valid) if flag]
+        valid_y = [y for y, flag in zip(means, valid) if flag]
+        valid_lo = [d for d, flag in zip(lower_arm, valid) if flag]
+        valid_hi = [d for d, flag in zip(upper_arm, valid) if flag]
+        if valid_x:
+            axis_disp.errorbar(
+                valid_x, valid_y, yerr=np.vstack([valid_lo, valid_hi]),
+                transform=axis_disp.transData + shift, color=COLORS[model],
+                ecolor=COLORS[model], marker=MARKERS[model_index],
+                markersize=3.2, markeredgecolor="white", markeredgewidth=0.3,
+                linestyle="none", elinewidth=0.7, capsize=1.0, capthick=0.7,
+                label=MODEL_LABELS[model])
+        else:
+            axis_disp.plot([], [], color=COLORS[model],
+                           marker=MARKERS[model_index], linestyle="none",
+                           label=MODEL_LABELS[model])
+
+        invalid_x = [x for x, flag in zip(LEADS, valid) if not flag]
+        invalid_y = [y for y, flag in zip(means, valid) if not flag]
+        if invalid_x:
+            axis_disp.plot(invalid_x, invalid_y,
+                           transform=axis_disp.transData + shift,
+                           linestyle="none", marker=MARKERS[model_index],
+                           markersize=3.2, markerfacecolor="none",
+                           markeredgecolor=COLORS[model],
+                           markeredgewidth=0.7, zorder=5)
     axis_disp.set_xlim(12, 180)
     axis_disp.set_ylim(0, YMAX_DISP)
     axis_disp.set_xticks(LEADS)
@@ -280,11 +320,6 @@ def main():
                         loc="left", fontsize=8)
     axis_disp.grid(axis="y", color="0.85", linewidth=0.4)
     axis_disp.set_axisbelow(True)
-    axis_disp.text(
-        0.005, 0.04,
-        "open-marker leads: fewer than 8 events contain a matched STP object "
-        "(no Appendix B error bar)",
-        transform=axis_disp.transAxes, fontsize=5.6, color="0.35")
 
     figure.canvas.draw()
     for axis in panels + [axis_disp]:
@@ -310,7 +345,8 @@ def main():
                "stp_displacement": displacement,
                "times": TIMES, "parameters": PARAMS, "models": MODELS,
                "leads": LEADS}
-    (OUTPUT / "plotted_values.json").write_text(json.dumps(payload, indent=2))
+    (OUTPUT / "plotted_values.json").write_text(
+        json.dumps(_jsonable(payload), indent=2))
     print("Saved", stem.with_suffix(".pdf"))
     print("Saved", stem.with_suffix(".svg"))
     print("Saved", stem.with_suffix(".png"))
