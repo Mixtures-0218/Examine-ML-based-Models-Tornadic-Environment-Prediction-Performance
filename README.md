@@ -1,5 +1,7 @@
 # Examine-ML-based-Models-Tornadic-Environment-Prediction-Performance
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24481472.svg)](https://doi.org/10.5281/zenodo.24481472)
+
 Code Contributors: Yiding Luo, Rui Yuan, Shetian Xia, and Royce Lee
 
 This repository accompanies the manuscript cited below and is released under the MIT License.
