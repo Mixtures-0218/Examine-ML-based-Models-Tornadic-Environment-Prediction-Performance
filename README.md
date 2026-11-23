@@ -2,7 +2,7 @@
 
 Code Contributors: Yiding Luo, Rui Yuan, Shetian Xia, and Royce Lee
 
-This working repository is private during manuscript revision. Access is limited to authorized collaborators.
+This repository accompanies the manuscript cited below and is released under the MIT License.
 
 All the necessary code for
 
