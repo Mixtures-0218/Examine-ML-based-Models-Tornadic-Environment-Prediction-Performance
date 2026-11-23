@@ -1,0 +1,45 @@
+{
+  "title": "Analysis code for \"Evaluation of Machine-Learning Weather Models in Reproducing Mesoscale Tornado-Favorable Convective Environments\"",
+  "description": "<p>Analysis code and final figures for the manuscript <em>Evaluation of Machine-Learning Weather Models in Reproducing Mesoscale Tornado-Favorable Convective Environments</em> (Luo, Yuan, Xia, Lee, and Anderson-Frey).</p><p>The repository contains the full pipeline from model output data to tornado-relevant convective parameters (CAPE, CIN, K-Index, 0-3 km positive and negative storm-relative helicity, LCPL, PLFC, and the significant tornado parameter STP), the verification metrics (performance diagrams with POD, SR, FB, and CSI; Fractions Skill Score; and MODE object-based diagnostics), and the resulting manuscript figures, including the eight-parameter supplementary figures.</p><p>Model-specific inference scripts for Pangu-Weather, FengWu V1/V2, and FuXi are provided under <code>models/</code>, and GFS download and conversion utilities under <code>data_download/</code>. Dependencies are pinned in <code>requirements.txt</code> (Python 3.11.5).</p>",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "mit",
+  "language": "eng",
+  "creators": [
+    {
+      "name": "Luo, Yiding",
+      "affiliation": "Department of Atmospheric and Climate Science, University of Washington"
+    },
+    {
+      "name": "Yuan, Rui",
+      "affiliation": "Department of Atmospheric and Climate Science, University of Washington"
+    },
+    {
+      "name": "Xia, Shetian",
+      "affiliation": "Department of Atmospheric and Climate Science, University of Washington"
+    },
+    {
+      "name": "Lee, Royce",
+      "affiliation": "Department of Atmospheric and Climate Science, University of Washington"
+    },
+    {
+      "name": "Anderson-Frey, Alexandra",
+      "affiliation": "Department of Atmospheric and Climate Science, University of Washington"
+    }
+  ],
+  "keywords": [
+    "machine learning",
+    "weather forecasting",
+    "tornado",
+    "convective environments",
+    "forecast verification",
+    "ERA5",
+    "Pangu-Weather",
+    "FengWu",
+    "FuXi",
+    "significant tornado parameter",
+    "fractions skill score",
+    "MODE"
+  ],
+  "notes": "Companion code for a manuscript submitted to arXiv. Corresponding author: Alexandra Anderson-Frey (akaf@uw.edu)."
+}
